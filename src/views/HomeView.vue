@@ -1,10 +1,6 @@
-<script setup lang="ts"></script>
-
 <template>
-  <section>
-    <h2>项目启动成功</h2>
-    <p>请按照每日任务要求，完成代码、证据卡和自动化检测。</p>
-  </section>
+  <div class="page">
+    <h1>首页</h1>
+    <p class="page-description">欢迎进入校园轻集市，这里是项目的首页入口。</p>
+  </div>
 </template>
-
-<style scoped></style>
