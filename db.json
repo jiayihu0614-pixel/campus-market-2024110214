@@ -1,0 +1,250 @@
+{
+  "trades": [
+    {
+      "id": 1,
+      "title": "出闲置《软件工程导论》教材",
+      "price": 28,
+      "category": "教材资料",
+      "condition": "九成新",
+      "publisher": "计算机学院 林同学",
+      "publishTime": "2026-06-29 09:20",
+      "location": "东区宿舍 6 栋",
+      "image": "",
+      "status": "open",
+      "description": "教材内页干净，只有少量重点标记，可在东区宿舍楼下当面查看。"
+    },
+    {
+      "id": 2,
+      "title": "转让蓝牙降噪耳机",
+      "price": 160,
+      "category": "数码产品",
+      "condition": "八成新",
+      "publisher": "外国语学院 周同学",
+      "publishTime": "2026-06-29 08:45",
+      "location": "图书馆南门",
+      "image": "",
+      "status": "open",
+      "description": "耳机连接和降噪功能正常，配有充电线和原装收纳盒。"
+    },
+    {
+      "id": 3,
+      "title": "毕业出一辆校园自行车",
+      "price": 220,
+      "category": "运动出行",
+      "condition": "七成新",
+      "publisher": "机械学院 陈同学",
+      "publishTime": "2026-06-28 20:10",
+      "location": "西区体育馆",
+      "image": "",
+      "status": "open",
+      "description": "自行车刹车和车铃正常，适合日常往返教学楼，可小幅议价。"
+    },
+    {
+      "id": 4,
+      "title": "宿舍护眼台灯低价转",
+      "price": 35,
+      "category": "生活用品",
+      "condition": "九成新",
+      "publisher": "文学院 赵同学",
+      "publishTime": "2026-06-28 16:30",
+      "location": "南区宿舍 2 栋",
+      "image": "",
+      "status": "closed",
+      "description": "三档亮度可调，使用时间不长，毕业离校所以转让。"
+    },
+    {
+      "id": 5,
+      "title": "考研数学复习资料整套",
+      "price": 55,
+      "category": "考试资料",
+      "condition": "八成新",
+      "publisher": "经管学院 吴同学",
+      "publishTime": "2026-06-27 18:05",
+      "location": "第一教学楼大厅",
+      "image": "",
+      "status": "done",
+      "description": "包含高数、线代和概率论讲义，部分章节有学习笔记。"
+    }
+  ],
+  "lostFounds": [
+    {
+      "id": 1,
+      "title": "西门附近丢失黑色耳机盒",
+      "type": "lost",
+      "itemName": "黑色蓝牙耳机盒",
+      "location": "学校西门打印店附近",
+      "time": "2026-06-29 10:10",
+      "contact": "站内联系 李同学",
+      "description": "耳机盒正面有一道浅划痕，里面没有耳机，如有拾到请联系我。",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "拾到校园卡一张",
+      "type": "found",
+      "itemName": "校园卡",
+      "location": "东区食堂二楼",
+      "time": "2026-06-29 08:20",
+      "contact": "站内联系 王同学",
+      "description": "卡片已交给东区食堂服务台，请失主说明姓名和学院后领取。",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "寻找一串宿舍钥匙",
+      "type": "lost",
+      "itemName": "钥匙",
+      "location": "图书馆至南区宿舍路段",
+      "time": "2026-06-28 21:00",
+      "contact": "站内联系 孙同学",
+      "description": "钥匙圈上有蓝色小挂牌，共有三把钥匙，麻烦拾到的同学联系。",
+      "status": "open"
+    },
+    {
+      "id": 4,
+      "title": "教学楼拾到透明雨伞",
+      "type": "found",
+      "itemName": "透明长柄雨伞",
+      "location": "第二教学楼 204 教室",
+      "time": "2026-06-28 17:40",
+      "contact": "站内联系 刘同学",
+      "description": "晚课结束后在最后一排发现，已暂时放在教学楼值班室。",
+      "status": "closed"
+    },
+    {
+      "id": 5,
+      "title": "操场看台遗失白色水杯",
+      "type": "lost",
+      "itemName": "白色保温杯",
+      "location": "北区操场看台",
+      "time": "2026-06-27 19:30",
+      "contact": "站内联系 郑同学",
+      "description": "杯身贴有校园社团贴纸，已经找回，感谢帮助。",
+      "status": "done"
+    }
+  ],
+  "groupBuys": [
+    {
+      "id": 1,
+      "title": "东区食堂三楼拼奶茶",
+      "type": "餐饮拼单",
+      "targetCount": 4,
+      "currentCount": 2,
+      "deadline": "2026-06-29 15:30",
+      "location": "东区食堂三楼",
+      "publisher": "材料学院 何同学",
+      "status": "open",
+      "description": "满四杯可以使用优惠券，目前还差 2 人，到店后各自付款。"
+    },
+    {
+      "id": 2,
+      "title": "晚饭外卖拼单免配送费",
+      "type": "外卖拼单",
+      "targetCount": 5,
+      "currentCount": 3,
+      "deadline": "2026-06-29 17:20",
+      "location": "南区宿舍 4 栋",
+      "publisher": "法学院 钱同学",
+      "status": "open",
+      "description": "准备点校外轻食，凑够五份免配送费，送到宿舍楼下领取。"
+    },
+    {
+      "id": 3,
+      "title": "快递代取搭子一起搬",
+      "type": "互助搭子",
+      "targetCount": 3,
+      "currentCount": 2,
+      "deadline": "2026-06-29 19:00",
+      "location": "菜鸟驿站门口",
+      "publisher": "土木学院 唐同学",
+      "status": "open",
+      "description": "今天快递比较多，想找同方向同学一起从驿站搬到西区宿舍。"
+    },
+    {
+      "id": 4,
+      "title": "期末图书馆自习搭子",
+      "type": "学习搭子",
+      "targetCount": 4,
+      "currentCount": 4,
+      "deadline": "2026-07-05 08:00",
+      "location": "图书馆三楼自习区",
+      "publisher": "理学院 许同学",
+      "status": "closed",
+      "description": "每天上午一起自习，互相提醒学习进度，目前人数已满。"
+    },
+    {
+      "id": 5,
+      "title": "周末羽毛球运动搭子",
+      "type": "运动搭子",
+      "targetCount": 4,
+      "currentCount": 4,
+      "deadline": "2026-06-28 14:00",
+      "location": "西区体育馆",
+      "publisher": "体育学院 徐同学",
+      "status": "done",
+      "description": "周末双打活动已经结束，后续还会继续发布组队信息。"
+    }
+  ],
+  "errands": [
+    {
+      "id": 1,
+      "title": "求帮取快递到 6 栋宿舍",
+      "taskType": "取快递",
+      "reward": 5,
+      "pickupLocation": "东区菜鸟驿站",
+      "deliveryLocation": "东区宿舍 6 栋",
+      "deadline": "2026-06-29 18:30",
+      "publisher": "计算机学院 高同学",
+      "status": "open",
+      "description": "有两个小件快递，取件码接单后发送，送到宿舍楼下即可。"
+    },
+    {
+      "id": 2,
+      "title": "帮送报名材料到学院办公室",
+      "taskType": "送文件",
+      "reward": 8,
+      "pickupLocation": "第一教学楼 305",
+      "deliveryLocation": "行政楼 412",
+      "deadline": "2026-06-29 16:00",
+      "publisher": "艺术学院 蒋同学",
+      "status": "open",
+      "description": "材料已装入文件袋，需要在办公室下班前送到并交给值班老师。"
+    },
+    {
+      "id": 3,
+      "title": "食堂带一份晚饭到实验室",
+      "taskType": "买饭",
+      "reward": 6,
+      "pickupLocation": "北区食堂一楼",
+      "deliveryLocation": "实验楼 B205",
+      "deadline": "2026-06-29 18:10",
+      "publisher": "化工学院 方同学",
+      "status": "open",
+      "description": "需要带一份盖饭，餐费另付，送到实验室门口即可。"
+    },
+    {
+      "id": 4,
+      "title": "打印装订课程报告",
+      "taskType": "打印资料",
+      "reward": 10,
+      "pickupLocation": "西门打印店",
+      "deliveryLocation": "第三教学楼 101",
+      "deadline": "2026-06-29 14:30",
+      "publisher": "经管学院 罗同学",
+      "status": "closed",
+      "description": "电子文件已经发给打印店，需要取回两份装订报告，目前已有同学接单。"
+    },
+    {
+      "id": 5,
+      "title": "代拿校门口外卖",
+      "taskType": "代拿外卖",
+      "reward": 4,
+      "pickupLocation": "学校南门",
+      "deliveryLocation": "南区宿舍 1 栋",
+      "deadline": "2026-06-28 20:00",
+      "publisher": "外国语学院 胡同学",
+      "status": "done",
+      "description": "任务已经完成，外卖已送到宿舍楼下。"
+    }
+  ]
+}

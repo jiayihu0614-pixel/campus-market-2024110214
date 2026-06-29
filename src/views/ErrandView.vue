@@ -1,3 +1,36 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
+import { getErrands } from '@/api/errand'
+import EmptyState from '@/components/EmptyState.vue'
+import ItemCard from '@/components/ItemCard.vue'
+
+interface Errand {
+  id: number
+  title: string
+  taskType: string
+  reward: number
+  pickupLocation: string
+  deliveryLocation: string
+  deadline: string
+  publisher: string
+  status: string
+  description: string
+}
+
+const errands = ref<Errand[]>([])
+const errorMessage = ref('')
+
+onMounted(async () => {
+  try {
+    const response = await getErrands()
+    errands.value = response.data
+  } catch {
+    errorMessage.value = '数据加载失败，请确认 JSON Server 已启动。'
+  }
+})
+</script>
+
 <template>
   <main class="page">
     <header class="page-header">
@@ -6,19 +39,20 @@
       <p>这里将展示校内取快递、代买物品和文件送达等委托任务。</p>
     </header>
 
-    <section class="card-grid">
-      <article class="skeleton-card">
-        <h2>取送快递</h2>
-        <p>展示取件地点、送达地点和期望完成时间。</p>
-      </article>
-      <article class="skeleton-card">
-        <h2>代买物品</h2>
-        <p>发布校内商店或食堂的临时代买需求。</p>
-      </article>
-      <article class="skeleton-card">
-        <h2>文件送达</h2>
-        <p>帮助同学在教学楼和宿舍之间送达资料。</p>
-      </article>
+    <section v-if="errands.length" class="data-list">
+      <ItemCard
+        v-for="item in errands"
+        :key="item.id"
+        :title="item.title"
+        :description="item.description"
+        :price="`酬劳 ¥${item.reward}`"
+        :location="`${item.pickupLocation} → ${item.deliveryLocation}`"
+        :time="`截止 ${item.deadline}`"
+        :publisher="item.publisher"
+        :status="item.status"
+        :tag="item.taskType"
+      />
     </section>
+    <EmptyState v-else :text="errorMessage || '暂无跑腿委托信息'" />
   </main>
 </template>
