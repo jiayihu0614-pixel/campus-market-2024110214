@@ -64,6 +64,19 @@
       "image": "",
       "status": "done",
       "description": "包含高数、线代和概率论讲义，部分章节有学习笔记。"
+    },
+    {
+      "title": "出闲置《线性代数》教材",
+      "price": 25,
+      "category": "教材资料",
+      "condition": "九成新",
+      "publisher": "校园用户",
+      "publishTime": "2026-6-30 14:14:00",
+      "location": "第一教学楼大厅",
+      "image": "",
+      "status": "open",
+      "description": "教材内页干净，只有少量课堂笔记，可在教学楼当面查看。",
+      "id": 6
     }
   ],
   "lostFounds": [
@@ -121,6 +134,17 @@
       "contact": "站内联系 郑同学",
       "description": "杯身贴有校园社团贴纸，已经找回，感谢帮助。",
       "status": "done"
+    },
+    {
+      "title": "图书馆拾到蓝色校园卡套",
+      "type": "found",
+      "itemName": "蓝色校园卡套",
+      "location": "图书馆二楼",
+      "time": "2026-06-30T13:30",
+      "contact": "站内联系发布者",
+      "description": "下午在图书馆二楼拾到，请失主联系说明卡套特征。",
+      "status": "open",
+      "id": 6
     }
   ],
   "groupBuys": [
@@ -183,6 +207,18 @@
       "publisher": "体育学院 徐同学",
       "status": "done",
       "description": "周末双打活动已经结束，后续还会继续发布组队信息。"
+    },
+    {
+      "title": "周三晚篮球搭子招募",
+      "type": "运动搭子",
+      "targetCount": 6,
+      "currentCount": 1,
+      "deadline": "2026-07-01T19:00",
+      "location": "西区篮球场",
+      "publisher": "校园用户",
+      "status": "open",
+      "description": "计划晚上打半场篮球，还需要几名同学一起参加。",
+      "id": 6
     }
   ],
   "errands": [
@@ -245,6 +281,18 @@
       "publisher": "外国语学院 胡同学",
       "status": "done",
       "description": "任务已经完成，外卖已送到宿舍楼下。"
+    },
+    {
+      "title": "求帮送资料到行政楼",
+      "taskType": "送文件",
+      "reward": 8,
+      "pickupLocation": "第一教学楼305",
+      "deliveryLocation": "行政楼412",
+      "deadline": "2026-06-30T17:00",
+      "publisher": "校园用户",
+      "status": "open",
+      "description": "资料已装入文件袋，需要在下班前送到学院办公室。",
+      "id": 6
     }
   ]
 }
