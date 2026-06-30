@@ -26,11 +26,11 @@ withDefaults(
 <style scoped>
 .form-field {
   display: grid;
-  gap: 7px;
+  gap: 8px;
 }
 
 .form-field__label {
-  color: #374151;
+  color: #334155;
   font-size: 14px;
   font-weight: 600;
 }
@@ -41,6 +41,7 @@ withDefaults(
 }
 
 .form-field__error {
+  padding-left: 2px;
   font-size: 12px;
 }
 </style>

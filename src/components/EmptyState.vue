@@ -21,10 +21,11 @@ withDefaults(
   padding: 32px;
   display: grid;
   place-items: center;
-  border: 1px dashed #cbd5e1;
+  border: 1px dashed #b8c4d6;
   border-radius: 8px;
-  color: #6b7280;
+  color: #64748b;
   background: #ffffff;
+  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
   text-align: center;
 }
 </style>

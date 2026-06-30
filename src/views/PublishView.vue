@@ -307,41 +307,64 @@ async function submitForm() {
 .publish-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  align-items: start;
+  gap: 22px;
 }
 
 .form-section {
-  padding: 24px;
+  padding: 26px;
   display: grid;
   align-content: start;
-  gap: 18px;
-  border: 1px solid #e5e7eb;
+  gap: 20px;
+  border: 1px solid #dfe5ee;
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 7px 24px rgb(23 32 51 / 5%);
 }
 
 .form-section h2 {
   margin: 0;
-  color: #111827;
-  font-size: 18px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #edf0f5;
+  color: #172033;
+  font-size: 19px;
+}
+
+.form-section h2::before {
+  width: 4px;
+  height: 18px;
+  border-radius: 2px;
+  background: #2563eb;
+  content: '';
 }
 
 .form-section :deep(input),
 .form-section :deep(select),
 .form-section :deep(textarea) {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 5px;
-  color: #111827;
-  background: #ffffff;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid #cfd7e3;
+  border-radius: 6px;
+  color: #172033;
+  background: #fbfcfe;
   outline: none;
+}
+
+.form-section :deep(input:hover),
+.form-section :deep(select:hover),
+.form-section :deep(textarea:hover) {
+  border-color: #9fb3cf;
 }
 
 .form-section :deep(input:focus),
 .form-section :deep(select:focus),
 .form-section :deep(textarea:focus) {
   border-color: #2563eb;
+  background: #ffffff;
   box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
 }
 
@@ -354,16 +377,24 @@ async function submitForm() {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+  padding-top: 2px;
 }
 
 .form-actions button {
-  min-width: 130px;
-  padding: 11px 20px;
+  min-width: 132px;
+  padding: 12px 20px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #ffffff;
   background: #2563eb;
+  box-shadow: 0 7px 16px rgb(37 99 235 / 18%);
   cursor: pointer;
+}
+
+.form-actions button:hover:not(:disabled) {
+  background: #1d4ed8;
+  box-shadow: 0 9px 20px rgb(37 99 235 / 22%);
+  transform: translateY(-1px);
 }
 
 .form-actions button:disabled {
@@ -374,6 +405,13 @@ async function submitForm() {
 .form-actions .secondary-button {
   color: #374151;
   background: #e5e7eb;
+  box-shadow: none;
+}
+
+.form-actions .secondary-button:hover:not(:disabled) {
+  color: #1f2937;
+  background: #d8dee8;
+  box-shadow: none;
 }
 
 @media (max-width: 800px) {

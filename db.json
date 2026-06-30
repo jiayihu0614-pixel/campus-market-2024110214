@@ -77,6 +77,19 @@
       "status": "open",
       "description": "教材内页干净，只有少量课堂笔记，可在教学楼当面查看。",
       "id": 6
+    },
+    {
+      "title": "出售洗面奶",
+      "price": 30,
+      "category": "生活用品",
+      "condition": "九成新",
+      "publisher": "校园用户",
+      "publishTime": "2026-6-30 17:03:04",
+      "location": "东苑食堂门口",
+      "image": "",
+      "status": "open",
+      "description": "9成新",
+      "id": 7
     }
   ],
   "lostFounds": [

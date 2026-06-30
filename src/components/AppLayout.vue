@@ -15,12 +15,19 @@ import AppHeader from './AppHeader.vue'
 <style scoped>
 .app-layout {
   min-height: 100vh;
-  background: #f5f7fb;
+  background: #f4f7fb;
 }
 
 .app-main {
   width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 32px 0 64px;
+  padding: 38px 0 72px;
+}
+
+@media (max-width: 720px) {
+  .app-main {
+    width: min(100% - 32px, 1200px);
+    padding-top: 26px;
+  }
 }
 </style>

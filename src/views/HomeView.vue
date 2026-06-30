@@ -56,58 +56,83 @@
 
 <style scoped>
 .home-intro {
-  margin-bottom: 30px;
-  padding: 32px;
+  margin-bottom: 34px;
+  padding: 34px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   border: 1px solid #dbe4f0;
+  border-left: 4px solid #2563eb;
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 8px 28px rgb(23 32 51 / 6%);
 }
 
 .home-intro h1 {
   margin: 0 0 10px;
-  color: #111827;
-  font-size: 32px;
+  color: #172033;
+  font-size: 34px;
 }
 
 .home-intro p {
   max-width: 720px;
   margin: 0;
-  color: #6b7280;
+  color: #64748b;
   line-height: 1.8;
 }
 
 .publish-button {
-  padding: 11px 18px;
+  padding: 12px 20px;
   flex: none;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #ffffff;
   background: #2563eb;
+  box-shadow: 0 7px 16px rgb(37 99 235 / 20%);
   text-decoration: none;
+}
+
+.publish-button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 9px 20px rgb(37 99 235 / 24%);
+  transform: translateY(-1px);
 }
 
 .business-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .business-card {
-  min-height: 132px;
-  padding: 20px;
-  border: 1px solid #e5e7eb;
+  min-height: 140px;
+  padding: 22px;
+  border: 1px solid #dfe5ee;
+  border-top: 3px solid #3b82f6;
   border-radius: 8px;
   color: inherit;
   background: #ffffff;
+  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
   text-decoration: none;
+}
+
+.business-card:nth-child(2) {
+  border-top-color: #10b981;
+}
+
+.business-card:nth-child(3) {
+  border-top-color: #f59e0b;
+}
+
+.business-card:nth-child(4) {
+  border-top-color: #f43f5e;
 }
 
 .business-card:hover {
   border-color: #93b4ee;
-  box-shadow: 0 8px 22px rgb(37 99 235 / 8%);
+  border-top-color: #2563eb;
+  box-shadow: 0 12px 28px rgb(23 32 51 / 9%);
+  transform: translateY(-3px);
 }
 
 .business-card strong,
@@ -116,19 +141,33 @@
 }
 
 .business-card strong {
-  color: #111827;
-  font-size: 17px;
+  color: #172033;
+  font-size: 18px;
 }
 
 .business-card span {
   margin-top: 10px;
-  color: #6b7280;
+  color: #64748b;
   font-size: 13px;
   line-height: 1.7;
 }
 
 .recommend-section {
-  margin-top: 30px;
+  margin-top: 36px;
+}
+
+@media (max-width: 700px) {
+  .home-intro {
+    padding: 26px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .business-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 900px) {

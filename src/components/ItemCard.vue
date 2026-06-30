@@ -57,10 +57,17 @@ const statusText = computed(() => {
 <style scoped>
 .item-card {
   min-width: 0;
-  padding: 20px;
-  border: 1px solid #e5e7eb;
+  padding: 22px;
+  border: 1px solid #dfe5ee;
   border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
+}
+
+.item-card:hover {
+  border-color: #b7c7e2;
+  box-shadow: 0 12px 30px rgb(23 32 51 / 8%);
+  transform: translateY(-2px);
 }
 
 .item-card__top {
@@ -72,7 +79,7 @@ const statusText = computed(() => {
 
 .item-card__tag,
 .item-card__status {
-  padding: 4px 8px;
+  padding: 5px 9px;
   border-radius: 4px;
   font-size: 12px;
 }
@@ -80,11 +87,26 @@ const statusText = computed(() => {
 .item-card__tag {
   color: #1d4ed8;
   background: #eff6ff;
+  font-weight: 600;
 }
 
 .item-card__status {
+  position: relative;
+  padding-left: 19px;
   color: #4b5563;
   background: #f3f4f6;
+}
+
+.item-card__status::before {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  content: '';
+  transform: translateY(-50%);
 }
 
 .item-card__status.is-open {
@@ -98,22 +120,23 @@ const statusText = computed(() => {
 }
 
 .item-card h2 {
-  margin: 16px 0 8px;
-  color: #111827;
+  margin: 17px 0 9px;
+  color: #172033;
   font-size: 18px;
+  line-height: 1.45;
 }
 
 .item-card__description {
   min-height: 48px;
   margin: 0;
-  color: #6b7280;
+  color: #64748b;
   font-size: 14px;
   line-height: 1.7;
 }
 
 .item-card__price {
   margin: 15px 0 0;
-  color: #dc2626;
+  color: #e11d48;
   font-size: 20px;
   font-weight: 700;
 }
@@ -123,7 +146,7 @@ const statusText = computed(() => {
   padding-top: 14px;
   display: grid;
   gap: 8px;
-  border-top: 1px solid #f0f2f5;
+  border-top: 1px solid #edf0f5;
 }
 
 .item-card__meta div {
@@ -134,12 +157,13 @@ const statusText = computed(() => {
 }
 
 .item-card__meta dt {
-  color: #9ca3af;
+  color: #94a3b8;
+  font-weight: 500;
 }
 
 .item-card__meta dd {
   margin: 0;
-  color: #4b5563;
+  color: #475569;
   overflow-wrap: anywhere;
 }
 </style>
