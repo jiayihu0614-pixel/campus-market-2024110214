@@ -8,6 +8,11 @@ export interface FavoriteItem {
   title: string
   description: string
   location?: string
+  time?: string
+  publisher?: string
+  status?: string
+  price?: string | number
+  tag?: string
 }
 
 export const useFavoriteStore = defineStore('favorite', {

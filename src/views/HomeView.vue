@@ -1,32 +1,51 @@
 <template>
   <main class="page">
     <section class="home-intro">
-      <div>
+      <div class="hero-copy">
         <span class="page-tag">校园生活信息服务</span>
-        <h1>首页</h1>
+        <h1>校园轻集市</h1>
         <p>欢迎来到校园轻集市，在这里浏览二手商品、查找失物、寻找拼单搭子或发布跑腿委托。</p>
+        <div class="hero-actions">
+          <RouterLink class="publish-button" to="/publish">去发布</RouterLink>
+          <RouterLink class="browse-button" to="/trade">浏览集市</RouterLink>
+        </div>
       </div>
-      <RouterLink class="publish-button" to="/publish">发布信息</RouterLink>
+      <div class="hero-note" aria-hidden="true">
+        <strong>校内真实需求</strong>
+        <span>让闲置流动，让互助更简单</span>
+      </div>
     </section>
 
     <section>
       <h2 class="section-title">核心业务</h2>
       <div class="business-grid">
         <RouterLink class="business-card" to="/trade">
-          <strong>二手交易</strong>
-          <span>发现校园内的教材、数码和生活闲置。</span>
+          <span class="business-icon" aria-hidden="true">🛍️</span>
+          <span class="business-copy">
+            <strong>二手交易</strong>
+            <span>发现校园内的教材、数码和生活闲置。</span>
+          </span>
         </RouterLink>
         <RouterLink class="business-card" to="/lost-found">
-          <strong>失物招领</strong>
-          <span>发布失物或拾物信息，帮助物品回到主人身边。</span>
+          <span class="business-icon" aria-hidden="true">🔎</span>
+          <span class="business-copy">
+            <strong>失物招领</strong>
+            <span>发布失物或拾物信息，帮助物品回到主人身边。</span>
+          </span>
         </RouterLink>
         <RouterLink class="business-card" to="/group-buy">
-          <strong>拼单搭子</strong>
-          <span>寻找拼餐、拼车、学习和活动伙伴。</span>
+          <span class="business-icon" aria-hidden="true">🤝</span>
+          <span class="business-copy">
+            <strong>拼单搭子</strong>
+            <span>寻找拼餐、拼车、学习和活动伙伴。</span>
+          </span>
         </RouterLink>
         <RouterLink class="business-card" to="/errand">
-          <strong>跑腿委托</strong>
-          <span>发布或承接校内取件、代买和送达任务。</span>
+          <span class="business-icon" aria-hidden="true">📦</span>
+          <span class="business-copy">
+            <strong>跑腿委托</strong>
+            <span>发布或承接校内取件、代买和送达任务。</span>
+          </span>
         </RouterLink>
       </div>
     </section>
@@ -56,46 +75,87 @@
 
 <style scoped>
 .home-intro {
-  margin-bottom: 34px;
-  padding: 34px 36px;
+  margin-bottom: 40px;
+  padding: 38px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  border: 1px solid #dbe4f0;
-  border-left: 4px solid #2563eb;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 8px 28px rgb(23 32 51 / 6%);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  background: var(--color-canvas);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 5%);
 }
 
 .home-intro h1 {
   margin: 0 0 10px;
-  color: #172033;
-  font-size: 34px;
+  color: var(--color-ink);
+  font-size: 36px;
+  font-weight: 650;
 }
 
 .home-intro p {
   max-width: 720px;
   margin: 0;
-  color: #64748b;
+  color: var(--color-muted);
   line-height: 1.8;
 }
 
 .publish-button {
-  padding: 12px 20px;
-  flex: none;
-  border-radius: 6px;
+  padding: 12px 22px;
+  border: 1px solid var(--color-primary);
+  border-radius: 999px;
   color: #ffffff;
-  background: #2563eb;
-  box-shadow: 0 7px 16px rgb(37 99 235 / 20%);
-  text-decoration: none;
+  background: var(--color-primary);
+  font-size: 14px;
+  font-weight: 650;
 }
 
 .publish-button:hover {
-  background: #1d4ed8;
-  box-shadow: 0 9px 20px rgb(37 99 235 / 24%);
+  border-color: var(--color-primary-active);
+  background: var(--color-primary-active);
   transform: translateY(-1px);
+}
+
+.hero-actions {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.browse-button {
+  padding: 12px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.browse-button:hover {
+  border-color: #b8b8b8;
+  background: var(--color-page);
+}
+
+.hero-note {
+  min-width: 250px;
+  padding: 22px;
+  display: grid;
+  gap: 7px;
+  border-radius: 16px;
+  color: var(--color-body);
+  background: #fff6f7;
+}
+
+.hero-note strong {
+  font-size: 17px;
+}
+
+.hero-note span {
+  color: var(--color-muted);
+  font-size: 13px;
 }
 
 .business-grid {
@@ -107,47 +167,45 @@
 .business-card {
   min-height: 140px;
   padding: 22px;
-  border: 1px solid #dfe5ee;
-  border-top: 3px solid #3b82f6;
-  border-radius: 8px;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
   color: inherit;
-  background: #ffffff;
-  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
-  text-decoration: none;
-}
-
-.business-card:nth-child(2) {
-  border-top-color: #10b981;
-}
-
-.business-card:nth-child(3) {
-  border-top-color: #f59e0b;
-}
-
-.business-card:nth-child(4) {
-  border-top-color: #f43f5e;
+  background: var(--color-card);
 }
 
 .business-card:hover {
-  border-color: #93b4ee;
-  border-top-color: #2563eb;
-  box-shadow: 0 12px 28px rgb(23 32 51 / 9%);
-  transform: translateY(-3px);
+  border-color: var(--color-border);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
+  transform: translateY(-2px);
 }
 
-.business-card strong,
-.business-card span {
+.business-copy,
+.business-copy strong,
+.business-copy > span {
   display: block;
 }
 
+.business-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--color-page);
+  font-size: 21px;
+}
+
 .business-card strong {
-  color: #172033;
+  color: var(--color-ink);
   font-size: 18px;
 }
 
-.business-card span {
+.business-copy > span {
   margin-top: 10px;
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 13px;
   line-height: 1.7;
 }
@@ -158,9 +216,20 @@
 
 @media (max-width: 700px) {
   .home-intro {
-    padding: 26px;
+    padding: 28px;
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .hero-note {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .business-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -168,11 +237,14 @@
   .business-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 900px) {
-  .business-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions a {
+    text-align: center;
   }
 }
 </style>

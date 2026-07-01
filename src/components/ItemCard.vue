@@ -61,16 +61,17 @@ const statusText = computed(() => {
 <style scoped>
 .item-card {
   min-width: 0;
-  padding: 22px;
-  border: 1px solid #dfe5ee;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  background: var(--color-card);
 }
 
 .item-card:hover {
-  border-color: #b7c7e2;
-  box-shadow: 0 12px 30px rgb(23 32 51 / 8%);
+  border-color: var(--color-border);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
   transform: translateY(-2px);
 }
 
@@ -83,22 +84,22 @@ const statusText = computed(() => {
 
 .item-card__tag,
 .item-card__status {
-  padding: 5px 9px;
-  border-radius: 4px;
+  padding: 6px 10px;
+  border-radius: 999px;
   font-size: 12px;
 }
 
 .item-card__tag {
-  color: #1d4ed8;
-  background: #eff6ff;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
   font-weight: 600;
 }
 
 .item-card__status {
   position: relative;
   padding-left: 19px;
-  color: #4b5563;
-  background: #f3f4f6;
+  color: var(--color-muted);
+  background: var(--color-page);
 }
 
 .item-card__status::before {
@@ -119,38 +120,43 @@ const statusText = computed(() => {
 }
 
 .item-card__status.is-done {
-  color: #1d4ed8;
-  background: #eff6ff;
+  color: var(--color-body);
+  background: var(--color-page);
 }
 
 .item-card h2 {
-  margin: 17px 0 9px;
-  color: #172033;
+  margin: 18px 0 9px;
+  color: var(--color-ink);
   font-size: 18px;
+  font-weight: 650;
   line-height: 1.45;
 }
 
 .item-card__description {
-  min-height: 48px;
+  min-height: 47px;
   margin: 0;
-  color: #64748b;
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-muted);
   font-size: 14px;
   line-height: 1.7;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .item-card__price {
   margin: 15px 0 0;
-  color: #e11d48;
+  color: var(--color-primary-active);
   font-size: 20px;
   font-weight: 700;
 }
 
 .item-card__meta {
   margin: 18px 0 0;
-  padding-top: 14px;
+  padding-top: 16px;
   display: grid;
   gap: 8px;
-  border-top: 1px solid #edf0f5;
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .item-card__meta div {
@@ -161,21 +167,20 @@ const statusText = computed(() => {
 }
 
 .item-card__meta dt {
-  color: #94a3b8;
+  color: var(--color-muted-soft);
   font-weight: 500;
 }
 
 .item-card__meta dd {
   margin: 0;
-  color: #475569;
+  color: var(--color-body);
   overflow-wrap: anywhere;
 }
 
 .item-card__footer {
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: auto;
+  padding-top: 16px;
   display: flex;
   justify-content: flex-end;
-  border-top: 1px solid #edf0f5;
 }
 </style>

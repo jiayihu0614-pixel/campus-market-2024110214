@@ -34,10 +34,13 @@ onMounted(async () => {
 
 <template>
   <main class="page">
-    <header class="page-header">
-      <span class="page-tag">校园互助</span>
-      <h1>失物招领</h1>
-      <p>这里将展示同学发布的失物寻找和拾物招领信息。</p>
+    <header class="page-header page-header--action">
+      <div>
+        <span class="page-tag">校园互助</span>
+        <h1>失物招领</h1>
+        <p>这里将展示同学发布的失物寻找和拾物招领信息。</p>
+      </div>
+      <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
 
     <section v-if="lostFounds.length" class="data-list">
@@ -64,6 +67,10 @@ onMounted(async () => {
                 title: item.title,
                 description: item.description,
                 location: item.location,
+                time: item.time,
+                publisher: item.contact,
+                status: item.status,
+                tag: item.type === 'lost' ? `寻物：${item.itemName}` : `招领：${item.itemName}`,
               })
             "
           >

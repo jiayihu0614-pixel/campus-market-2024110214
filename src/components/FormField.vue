@@ -26,22 +26,22 @@ withDefaults(
 <style scoped>
 .form-field {
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 .form-field__label {
-  color: #334155;
+  color: var(--color-body);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .form-field__required,
 .form-field__error {
-  color: #dc2626;
+  color: var(--color-primary-active);
 }
 
 .form-field__error {
   padding-left: 2px;
-  font-size: 12px;
+  font-size: 13px;
 }
 </style>

@@ -35,10 +35,13 @@ onMounted(async () => {
 
 <template>
   <main class="page">
-    <header class="page-header">
-      <span class="page-tag">组队与拼单</span>
-      <h1>拼单搭子</h1>
-      <p>这里将展示拼餐、拼车、学习搭子和校园活动组队信息。</p>
+    <header class="page-header page-header--action">
+      <div>
+        <span class="page-tag">组队与拼单</span>
+        <h1>拼单搭子</h1>
+        <p>这里将展示拼餐、拼车、学习搭子和校园活动组队信息。</p>
+      </div>
+      <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
 
     <section v-if="groupBuys.length" class="data-list">
@@ -65,6 +68,10 @@ onMounted(async () => {
                 title: item.title,
                 description: item.description,
                 location: item.location,
+                time: `截止 ${item.deadline}`,
+                publisher: item.publisher,
+                status: item.status,
+                tag: item.type,
               })
             "
           >

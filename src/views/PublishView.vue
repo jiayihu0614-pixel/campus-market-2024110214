@@ -307,21 +307,28 @@ async function submitForm() {
 
 <style scoped>
 .publish-form {
+  padding: 30px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
-  gap: 22px;
+  gap: 0;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  background: var(--color-card);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 5%);
 }
 
 .form-section {
-  padding: 26px;
+  padding: 0 28px 4px 0;
   display: grid;
   align-content: start;
   gap: 20px;
-  border: 1px solid #dfe5ee;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 7px 24px rgb(23 32 51 / 5%);
+}
+
+.form-section + .form-section {
+  padding-right: 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--color-border-soft);
 }
 
 .form-section h2 {
@@ -330,16 +337,17 @@ async function submitForm() {
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid #edf0f5;
-  color: #172033;
+  border-bottom: 1px solid var(--color-border-soft);
+  color: var(--color-ink);
   font-size: 19px;
+  font-weight: 650;
 }
 
 .form-section h2::before {
   width: 4px;
   height: 18px;
   border-radius: 2px;
-  background: #2563eb;
+  background: var(--color-primary);
   content: '';
 }
 
@@ -347,27 +355,27 @@ async function submitForm() {
 .form-section :deep(select),
 .form-section :deep(textarea) {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 13px;
-  border: 1px solid #cfd7e3;
-  border-radius: 6px;
-  color: #172033;
-  background: #fbfcfe;
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-ink);
+  background: var(--color-canvas);
   outline: none;
 }
 
 .form-section :deep(input:hover),
 .form-section :deep(select:hover),
 .form-section :deep(textarea:hover) {
-  border-color: #9fb3cf;
+  border-color: #b8b8b8;
 }
 
 .form-section :deep(input:focus),
 .form-section :deep(select:focus),
 .form-section :deep(textarea:focus) {
-  border-color: #2563eb;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
+  border-color: var(--color-ink);
+  background: var(--color-canvas);
+  box-shadow: 0 0 0 2px rgb(34 34 34 / 8%);
 }
 
 .form-section :deep(textarea) {
@@ -379,23 +387,23 @@ async function submitForm() {
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  padding-top: 2px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .form-actions button {
   min-width: 132px;
   padding: 12px 20px;
   border: 0;
-  border-radius: 6px;
+  border-radius: 999px;
   color: #ffffff;
-  background: #2563eb;
-  box-shadow: 0 7px 16px rgb(37 99 235 / 18%);
+  background: var(--color-primary);
   cursor: pointer;
 }
 
 .form-actions button:hover:not(:disabled) {
-  background: #1d4ed8;
-  box-shadow: 0 9px 20px rgb(37 99 235 / 22%);
+  background: var(--color-primary-active);
   transform: translateY(-1px);
 }
 
@@ -405,20 +413,32 @@ async function submitForm() {
 }
 
 .form-actions .secondary-button {
-  color: #374151;
-  background: #e5e7eb;
-  box-shadow: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-body);
+  background: var(--color-canvas);
 }
 
 .form-actions .secondary-button:hover:not(:disabled) {
-  color: #1f2937;
-  background: #d8dee8;
-  box-shadow: none;
+  color: var(--color-ink);
+  background: var(--color-page);
 }
 
 @media (max-width: 800px) {
   .publish-form {
+    padding: 24px;
     grid-template-columns: 1fr;
+  }
+
+  .form-section,
+  .form-section + .form-section {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .form-section + .form-section {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border-soft);
   }
 }
 </style>

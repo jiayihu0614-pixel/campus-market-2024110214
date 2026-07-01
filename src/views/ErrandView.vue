@@ -35,10 +35,13 @@ onMounted(async () => {
 
 <template>
   <main class="page">
-    <header class="page-header">
-      <span class="page-tag">校园互助</span>
-      <h1>跑腿委托</h1>
-      <p>这里将展示校内取快递、代买物品和文件送达等委托任务。</p>
+    <header class="page-header page-header--action">
+      <div>
+        <span class="page-tag">校园互助</span>
+        <h1>跑腿委托</h1>
+        <p>这里将展示校内取快递、代买物品和文件送达等委托任务。</p>
+      </div>
+      <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
 
     <section v-if="errands.length" class="data-list">
@@ -66,6 +69,11 @@ onMounted(async () => {
                 title: item.title,
                 description: item.description,
                 location: `${item.pickupLocation} → ${item.deliveryLocation}`,
+                time: `截止 ${item.deadline}`,
+                publisher: item.publisher,
+                status: item.status,
+                price: `酬劳 ¥${item.reward}`,
+                tag: item.taskType,
               })
             "
           >

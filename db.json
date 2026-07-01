@@ -90,6 +90,19 @@
       "status": "open",
       "description": "9成新",
       "id": 7
+    },
+    {
+      "title": "Day5功能验证：转让宿舍收纳架",
+      "price": 20,
+      "category": "生活用品",
+      "condition": "九成新",
+      "publisher": "校园用户",
+      "publishTime": "2026-7-1 09:54:53",
+      "location": "东区宿舍6栋",
+      "image": "",
+      "status": "open",
+      "description": "宿舍收纳架九成新，结构稳定，可在楼下当面查看。",
+      "id": 8
     }
   ],
   "lostFounds": [

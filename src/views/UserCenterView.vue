@@ -103,7 +103,6 @@ onMounted(async () => {
     <header class="page-header">
       <span class="page-tag">个人资料与内容管理</span>
       <h1>个人中心</h1>
-      <p>查看当前用户资料，以及跨页面共享的收藏和发布内容。</p>
     </header>
 
     <section class="profile-card">
@@ -129,7 +128,6 @@ onMounted(async () => {
       <div class="section-heading">
         <div>
           <h2>我的收藏</h2>
-          <p>收藏状态由Pinia在多个页面之间共享。</p>
         </div>
         <span>{{ favoriteStore.favoriteCount }}项</span>
       </div>
@@ -144,11 +142,12 @@ onMounted(async () => {
           :key="`${item.type}-${item.id}`"
           :title="item.title"
           :description="item.description"
+          :price="item.price"
           :location="item.location || '校园内'"
-          time="已收藏"
-          :publisher="userStore.displayName"
-          status="open"
-          :tag="getTypeLabel(item.type)"
+          :time="item.time || '时间未填写'"
+          :publisher="item.publisher || '发布人未填写'"
+          :status="item.status || 'open'"
+          :tag="item.tag || getTypeLabel(item.type)"
         >
           <template #footer>
             <button
@@ -167,7 +166,6 @@ onMounted(async () => {
       <div class="section-heading">
         <div>
           <h2>我的发布</h2>
-          <p>从四类已有接口中筛选当前用户发布的信息。</p>
         </div>
         <span>{{ myPosts.length }}项</span>
       </div>
@@ -195,26 +193,26 @@ onMounted(async () => {
 
 <style scoped>
 .profile-card {
-  margin-bottom: 28px;
-  padding: 26px;
+  margin-bottom: 34px;
+  padding: 30px;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 18px;
-  border: 1px solid #dfe5ee;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 7px 24px rgb(23 32 51 / 5%);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  background: var(--color-card);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 5%);
 }
 
 .avatar {
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   color: #ffffff;
-  background: #0f766e;
+  background: var(--color-primary);
   font-size: 22px;
   font-weight: 700;
 }
@@ -225,20 +223,21 @@ onMounted(async () => {
 }
 
 .profile-content h2 {
-  color: #172033;
+  color: var(--color-ink);
   font-size: 22px;
+  font-weight: 650;
 }
 
 .profile-meta {
   margin-top: 5px !important;
-  color: #2563eb;
+  color: var(--color-primary-active);
   font-size: 14px;
   font-weight: 600;
 }
 
 .profile-bio {
   margin-top: 8px !important;
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 14px;
 }
 
@@ -249,10 +248,10 @@ onMounted(async () => {
 
 .profile-stats div {
   min-width: 94px;
-  padding: 13px 16px;
-  border: 1px solid #e5eaf1;
-  border-radius: 8px;
-  background: #f8fafc;
+  padding: 15px 18px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  background: var(--color-page);
   text-align: center;
 }
 
@@ -262,13 +261,13 @@ onMounted(async () => {
 }
 
 .profile-stats strong {
-  color: #172033;
+  color: var(--color-ink);
   font-size: 20px;
 }
 
 .profile-stats span {
   margin-top: 3px;
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 12px;
 }
 
@@ -290,21 +289,22 @@ onMounted(async () => {
 }
 
 .section-heading h2 {
-  color: #172033;
+  color: var(--color-ink);
   font-size: 20px;
+  font-weight: 650;
 }
 
 .section-heading p {
   margin-top: 5px;
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 13px;
 }
 
 .section-heading > span {
-  padding: 5px 9px;
-  border-radius: 4px;
-  color: #1d4ed8;
-  background: #eff6ff;
+  padding: 6px 11px;
+  border-radius: 999px;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
   font-size: 12px;
   font-weight: 600;
 }

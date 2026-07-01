@@ -35,10 +35,13 @@ onMounted(async () => {
 
 <template>
   <main class="page">
-    <header class="page-header">
-      <span class="page-tag">校园闲置</span>
-      <h1>二手交易</h1>
-      <p>这里将展示校园内发布的教材、数码产品、生活用品和运动器材。</p>
+    <header class="page-header page-header--action">
+      <div>
+        <span class="page-tag">校园闲置</span>
+        <h1>二手交易</h1>
+        <p>这里将展示校园内发布的教材、数码产品、生活用品和运动器材。</p>
+      </div>
+      <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
 
     <section v-if="trades.length" class="data-list">
@@ -66,6 +69,11 @@ onMounted(async () => {
                 title: item.title,
                 description: item.description,
                 location: item.location,
+                time: item.publishTime,
+                publisher: item.publisher,
+                status: item.status,
+                price: `¥${item.price}`,
+                tag: item.category,
               })
             "
           >

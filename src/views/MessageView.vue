@@ -3,7 +3,6 @@
     <header class="page-header">
       <span class="page-tag">沟通与通知</span>
       <h1>消息中心</h1>
-      <p>Day5暂不接入真实消息服务，这里展示与当前功能相关的基础提示。</p>
     </header>
 
     <section class="notice-list">
@@ -35,19 +34,23 @@
 <style scoped>
 .notice-list {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .notice-card {
-  padding: 20px 22px;
+  padding: 22px 24px;
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);
   align-items: start;
   gap: 18px;
-  border: 1px solid #dfe5ee;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 5px 18px rgb(23 32 51 / 4%);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  background: var(--color-card);
+}
+
+.notice-card:hover {
+  border-color: var(--color-border);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 5%);
 }
 
 .notice-card h2,
@@ -56,30 +59,31 @@
 }
 
 .notice-card h2 {
-  color: #172033;
+  color: var(--color-ink);
   font-size: 17px;
+  font-weight: 650;
 }
 
 .notice-card p {
   margin-top: 7px;
-  color: #64748b;
+  color: var(--color-muted);
   font-size: 14px;
   line-height: 1.7;
 }
 
 .notice-type {
-  padding: 6px 9px;
-  border-radius: 4px;
-  color: #1d4ed8;
-  background: #eff6ff;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
   font-size: 12px;
   font-weight: 600;
   text-align: center;
 }
 
 .notice-type.is-favorite {
-  color: #be123c;
-  background: #fff1f2;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
 }
 
 .notice-type.is-publish {
