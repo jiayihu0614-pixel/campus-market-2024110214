@@ -51,6 +51,10 @@ const statusText = computed(() => {
         <dd>{{ publisher }}</dd>
       </div>
     </dl>
+
+    <footer v-if="$slots.footer" class="item-card__footer">
+      <slot name="footer" />
+    </footer>
   </article>
 </template>
 
@@ -165,5 +169,13 @@ const statusText = computed(() => {
   margin: 0;
   color: #475569;
   overflow-wrap: anywhere;
+}
+
+.item-card__footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #edf0f5;
 }
 </style>

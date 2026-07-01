@@ -7,6 +7,7 @@ import { createGroupBuy } from '@/api/groupBuy'
 import { createLostFound } from '@/api/lostFound'
 import { createTrade } from '@/api/trade'
 import FormField from '@/components/FormField.vue'
+import { useUserStore } from '@/stores/user'
 
 type BusinessType = 'trade' | 'lostFound' | 'groupBuy' | 'errand'
 
@@ -31,6 +32,7 @@ interface PublishForm {
 }
 
 const router = useRouter()
+const userStore = useUserStore()
 const submitting = ref(false)
 const errors = reactive<Record<string, string>>({})
 
@@ -129,7 +131,7 @@ async function submitForm() {
         price: form.price as number,
         category: form.category.trim(),
         condition: form.condition.trim(),
-        publisher: '校园用户',
+        publisher: userStore.displayName,
         publishTime: currentTime(),
         location: form.location.trim(),
         image: '',
@@ -145,7 +147,7 @@ async function submitForm() {
         itemName: form.itemName.trim(),
         location: form.location.trim(),
         time: form.time,
-        contact: '站内联系发布者',
+        contact: userStore.displayName,
         description: form.description.trim(),
         status: 'open',
       })
@@ -159,7 +161,7 @@ async function submitForm() {
         currentCount: 1,
         deadline: form.deadline,
         location: form.location.trim(),
-        publisher: '校园用户',
+        publisher: userStore.displayName,
         status: 'open',
         description: form.description.trim(),
       })
@@ -173,7 +175,7 @@ async function submitForm() {
         pickupLocation: form.pickupLocation.trim(),
         deliveryLocation: form.deliveryLocation.trim(),
         deadline: form.deadline,
-        publisher: '校园用户',
+        publisher: userStore.displayName,
         status: 'open',
         description: form.description.trim(),
       })

@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { getLostFounds } from '@/api/lostFound'
 import EmptyState from '@/components/EmptyState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import { useFavoriteStore } from '@/stores/favorite'
 
 interface LostFound {
   id: number
@@ -19,6 +20,7 @@ interface LostFound {
 
 const lostFounds = ref<LostFound[]>([])
 const errorMessage = ref('')
+const favoriteStore = useFavoriteStore()
 
 onMounted(async () => {
   try {
@@ -49,7 +51,26 @@ onMounted(async () => {
         :publisher="item.contact"
         :status="item.status"
         :tag="item.type === 'lost' ? `寻物：${item.itemName}` : `招领：${item.itemName}`"
-      />
+      >
+        <template #footer>
+          <button
+            class="favorite-button"
+            :class="{ 'is-active': favoriteStore.isFavorite('lostFound', item.id) }"
+            type="button"
+            @click="
+              favoriteStore.toggleFavorite({
+                id: item.id,
+                type: 'lostFound',
+                title: item.title,
+                description: item.description,
+                location: item.location,
+              })
+            "
+          >
+            {{ favoriteStore.isFavorite('lostFound', item.id) ? '已收藏' : '收藏' }}
+          </button>
+        </template>
+      </ItemCard>
     </section>
     <EmptyState v-else :text="errorMessage || '暂无失物招领信息'" />
   </main>

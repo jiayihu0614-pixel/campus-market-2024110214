@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { getGroupBuys } from '@/api/groupBuy'
 import EmptyState from '@/components/EmptyState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import { useFavoriteStore } from '@/stores/favorite'
 
 interface GroupBuy {
   id: number
@@ -20,6 +21,7 @@ interface GroupBuy {
 
 const groupBuys = ref<GroupBuy[]>([])
 const errorMessage = ref('')
+const favoriteStore = useFavoriteStore()
 
 onMounted(async () => {
   try {
@@ -50,7 +52,26 @@ onMounted(async () => {
         :publisher="item.publisher"
         :status="item.status"
         :tag="item.type"
-      />
+      >
+        <template #footer>
+          <button
+            class="favorite-button"
+            :class="{ 'is-active': favoriteStore.isFavorite('groupBuy', item.id) }"
+            type="button"
+            @click="
+              favoriteStore.toggleFavorite({
+                id: item.id,
+                type: 'groupBuy',
+                title: item.title,
+                description: item.description,
+                location: item.location,
+              })
+            "
+          >
+            {{ favoriteStore.isFavorite('groupBuy', item.id) ? '已收藏' : '收藏' }}
+          </button>
+        </template>
+      </ItemCard>
     </section>
     <EmptyState v-else :text="errorMessage || '暂无拼单搭子信息'" />
   </main>

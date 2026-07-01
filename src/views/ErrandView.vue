@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { getErrands } from '@/api/errand'
 import EmptyState from '@/components/EmptyState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import { useFavoriteStore } from '@/stores/favorite'
 
 interface Errand {
   id: number
@@ -20,6 +21,7 @@ interface Errand {
 
 const errands = ref<Errand[]>([])
 const errorMessage = ref('')
+const favoriteStore = useFavoriteStore()
 
 onMounted(async () => {
   try {
@@ -51,7 +53,26 @@ onMounted(async () => {
         :publisher="item.publisher"
         :status="item.status"
         :tag="item.taskType"
-      />
+      >
+        <template #footer>
+          <button
+            class="favorite-button"
+            :class="{ 'is-active': favoriteStore.isFavorite('errand', item.id) }"
+            type="button"
+            @click="
+              favoriteStore.toggleFavorite({
+                id: item.id,
+                type: 'errand',
+                title: item.title,
+                description: item.description,
+                location: `${item.pickupLocation} → ${item.deliveryLocation}`,
+              })
+            "
+          >
+            {{ favoriteStore.isFavorite('errand', item.id) ? '已收藏' : '收藏' }}
+          </button>
+        </template>
+      </ItemCard>
     </section>
     <EmptyState v-else :text="errorMessage || '暂无跑腿委托信息'" />
   </main>

@@ -4,6 +4,7 @@ import { onMounted, ref } from 'vue'
 import { getTrades } from '@/api/trade'
 import EmptyState from '@/components/EmptyState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import { useFavoriteStore } from '@/stores/favorite'
 
 interface Trade {
   id: number
@@ -20,6 +21,7 @@ interface Trade {
 
 const trades = ref<Trade[]>([])
 const errorMessage = ref('')
+const favoriteStore = useFavoriteStore()
 
 onMounted(async () => {
   try {
@@ -51,7 +53,26 @@ onMounted(async () => {
         :publisher="item.publisher"
         :status="item.status"
         :tag="item.category"
-      />
+      >
+        <template #footer>
+          <button
+            class="favorite-button"
+            :class="{ 'is-active': favoriteStore.isFavorite('trade', item.id) }"
+            type="button"
+            @click="
+              favoriteStore.toggleFavorite({
+                id: item.id,
+                type: 'trade',
+                title: item.title,
+                description: item.description,
+                location: item.location,
+              })
+            "
+          >
+            {{ favoriteStore.isFavorite('trade', item.id) ? '已收藏' : '收藏' }}
+          </button>
+        </template>
+      </ItemCard>
     </section>
     <EmptyState v-else :text="errorMessage || '暂无二手交易信息'" />
   </main>
