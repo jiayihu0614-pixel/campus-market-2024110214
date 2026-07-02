@@ -120,6 +120,12 @@ function resetForm() {
 }
 
 async function submitForm() {
+  if (!userStore.isLoggedIn) {
+    alert('请先登录后再发布信息')
+    await router.push({ path: '/login', query: { redirect: '/publish' } })
+    return
+  }
+
   if (!validate()) return
 
   submitting.value = true
@@ -198,7 +204,14 @@ async function submitForm() {
       <p>选择发布类型并填写真实、清楚的校园信息。</p>
     </header>
 
-    <form class="publish-form" @submit.prevent="submitForm">
+    <section v-if="!userStore.isLoggedIn" class="login-required">
+      <span aria-hidden="true">账</span>
+      <h2>登录后发布校园信息</h2>
+      <p>发布人会自动使用当前登录用户，方便在个人中心管理内容。</p>
+      <RouterLink to="/login?redirect=/publish">去登录</RouterLink>
+    </section>
+
+    <form v-else class="publish-form" @submit.prevent="submitForm">
       <section class="form-section">
         <h2>基本信息</h2>
 
@@ -306,6 +319,33 @@ async function submitForm() {
 </template>
 
 <style scoped>
+.login-required {
+  padding: 56px 28px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.login-required > span {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
+  font-weight: 700;
+}
+
+.login-required h2,
+.login-required p { margin: 0; }
+.login-required p { color: var(--color-muted); }
+.login-required a { margin-top: 8px; padding: 11px 20px; border-radius: 999px; color: #ffffff; background: var(--color-primary); }
+
 .publish-form {
   padding: 30px;
   display: grid;

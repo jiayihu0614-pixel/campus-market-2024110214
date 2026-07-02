@@ -40,6 +40,8 @@ function getTypeLabel(type: FavoriteType) {
 }
 
 onMounted(async () => {
+  if (!userStore.isLoggedIn) return
+
   try {
     const [tradeResponse, lostFoundResponse, groupBuyResponse, errandResponse] = await Promise.all([
       getTrades(),
@@ -105,12 +107,20 @@ onMounted(async () => {
       <h1>个人中心</h1>
     </header>
 
+    <section v-if="!userStore.isLoggedIn" class="login-required">
+      <span aria-hidden="true">我</span>
+      <h2>登录后查看个人中心</h2>
+      <p>登录后可查看用户资料、我的收藏和我的发布。</p>
+      <RouterLink to="/login?redirect=/user">去登录</RouterLink>
+    </section>
+
+    <template v-else>
     <section class="profile-card">
       <div class="avatar" aria-hidden="true">{{ userStore.displayName.slice(0, 1) }}</div>
       <div class="profile-content">
         <h2>{{ userStore.displayName }}</h2>
         <p class="profile-meta">{{ userStore.userDescription }}</p>
-        <p class="profile-bio">{{ userStore.currentUser.bio }}</p>
+        <p class="profile-bio">{{ userStore.currentUser?.bio }}</p>
       </div>
       <div class="profile-stats">
         <div>
@@ -188,10 +198,38 @@ onMounted(async () => {
         />
       </div>
     </section>
+    </template>
   </main>
 </template>
 
 <style scoped>
+.login-required {
+  padding: 56px 28px;
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 20px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.login-required > span {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--color-primary-active);
+  background: var(--color-primary-soft);
+  font-weight: 700;
+}
+
+.login-required h2,
+.login-required p { margin: 0; }
+.login-required p { color: var(--color-muted); }
+.login-required a { margin-top: 8px; padding: 11px 20px; border-radius: 999px; color: #ffffff; background: var(--color-primary); }
+
 .profile-card {
   margin-bottom: 34px;
   padding: 30px;

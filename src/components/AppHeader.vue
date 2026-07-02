@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 import AppNav from './AppNav.vue'
 import { useFavoriteStore } from '@/stores/favorite'
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()
 const favoriteStore = useFavoriteStore()
+const router = useRouter()
+
+async function handleLogout() {
+  userStore.logout()
+  await router.push('/')
+}
 </script>
 
 <template>
@@ -18,13 +26,20 @@ const favoriteStore = useFavoriteStore()
         </span>
       </RouterLink>
 
-      <RouterLink class="user-summary-link" to="/user">
-        <span class="user-avatar" aria-hidden="true">{{ userStore.displayName.slice(0, 1) }}</span>
-        <span class="user-copy">
-          <strong>{{ userStore.displayName }}</strong>
-          <small>收藏 {{ favoriteStore.favoriteCount }}</small>
-        </span>
-      </RouterLink>
+      <div v-if="userStore.isLoggedIn" class="account-actions">
+        <RouterLink class="user-summary-link" to="/user">
+          <span class="user-avatar" aria-hidden="true">{{ userStore.displayName.slice(0, 1) }}</span>
+          <span class="user-copy">
+            <strong>{{ userStore.displayName }}</strong>
+            <small>收藏 {{ favoriteStore.favoriteCount }}</small>
+          </span>
+        </RouterLink>
+        <button class="logout-button" type="button" @click="handleLogout">退出</button>
+      </div>
+      <div v-else class="account-actions">
+        <RouterLink class="login-link" to="/login">登录</RouterLink>
+        <RouterLink class="register-link" to="/register">注册</RouterLink>
+      </div>
     </div>
 
     <div class="nav-shell">
@@ -116,6 +131,40 @@ const favoriteStore = useFavoriteStore()
 .user-summary-link:hover {
   border-color: #c8c8c8;
   box-shadow: 0 4px 12px rgb(0 0 0 / 6%);
+}
+
+.account-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.logout-button,
+.login-link,
+.register-link {
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.logout-button,
+.login-link {
+  border: 1px solid var(--color-border);
+  color: var(--color-body);
+  background: #ffffff;
+}
+
+.logout-button:hover,
+.login-link:hover {
+  border-color: #c8c8c8;
+  background: var(--color-page);
+}
+
+.register-link {
+  border: 1px solid var(--color-primary);
+  color: #ffffff;
+  background: var(--color-primary);
 }
 
 .user-avatar {

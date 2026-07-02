@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import { getTrades } from '@/api/trade'
 import EmptyState from '@/components/EmptyState.vue'
+import ErrorState from '@/components/ErrorState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import LoadingState from '@/components/LoadingState.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import { useFavoriteStore } from '@/stores/favorite'
 
 interface Trade {
@@ -20,17 +23,36 @@ interface Trade {
 }
 
 const trades = ref<Trade[]>([])
-const errorMessage = ref('')
+const keyword = ref('')
+const loading = ref(false)
+const loadFailed = ref(false)
 const favoriteStore = useFavoriteStore()
 
-onMounted(async () => {
+const filteredTrades = computed(() => {
+  const searchText = keyword.value.trim().toLowerCase()
+  if (!searchText) return trades.value
+
+  return trades.value.filter((item) =>
+    [item.title, item.category, item.location, item.description].some((value) =>
+      value.toLowerCase().includes(searchText),
+    ),
+  )
+})
+
+async function loadTrades() {
+  loading.value = true
+  loadFailed.value = false
   try {
     const response = await getTrades()
     trades.value = response.data
   } catch {
-    errorMessage.value = '数据加载失败，请确认 JSON Server 已启动。'
+    loadFailed.value = true
+  } finally {
+    loading.value = false
   }
-})
+}
+
+onMounted(loadTrades)
 </script>
 
 <template>
@@ -44,9 +66,17 @@ onMounted(async () => {
       <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
 
-    <section v-if="trades.length" class="data-list">
+    <SearchBar v-model="keyword" placeholder="搜索二手商品、分类或交易地点" />
+
+    <LoadingState v-if="loading" text="正在加载二手商品..." />
+    <ErrorState
+      v-else-if="loadFailed"
+      message="请确认 JSON Server 已在 3001 端口启动"
+      @retry="loadTrades"
+    />
+    <section v-else-if="filteredTrades.length" class="data-list">
       <ItemCard
-        v-for="item in trades"
+        v-for="item in filteredTrades"
         :key="item.id"
         :title="item.title"
         :description="`${item.description} 成色：${item.condition}`"
@@ -82,6 +112,6 @@ onMounted(async () => {
         </template>
       </ItemCard>
     </section>
-    <EmptyState v-else :text="errorMessage || '暂无二手交易信息'" />
+    <EmptyState v-else :text="keyword ? '没有找到匹配的二手信息' : '暂无二手交易信息'" />
   </main>
 </template>

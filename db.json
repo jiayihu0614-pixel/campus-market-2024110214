@@ -103,6 +103,19 @@
       "status": "open",
       "description": "宿舍收纳架九成新，结构稳定，可在楼下当面查看。",
       "id": 8
+    },
+    {
+      "image": "",
+      "description": "用于验证登录用户发布、列表搜索、收藏和个人中心联动。",
+      "publishTime": "2026-07-02 10:30:00",
+      "price": 25,
+      "category": "教材资料",
+      "status": "open",
+      "condition": "九成新",
+      "publisher": "Day6实训同学",
+      "location": "东区图书馆门口",
+      "title": "Day6功能走查：出闲置前端开发教材",
+      "id": 9
     }
   ],
   "lostFounds": [
@@ -319,6 +332,30 @@
       "status": "open",
       "description": "资料已装入文件袋，需要在下班前送到学院办公室。",
       "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "student",
+      "password": "123456",
+      "name": "校园用户",
+      "college": "计算机学院",
+      "grade": "2023级",
+      "campus": "东校区",
+      "avatar": "",
+      "bio": "热爱校园生活，喜欢分享闲置好物。"
+    },
+    {
+      "college": "计算机学院",
+      "username": "day6_student",
+      "grade": "2024级",
+      "avatar": "",
+      "name": "Day6实训同学",
+      "campus": "东校区",
+      "bio": "正在完成校园轻集市Day6功能走查。",
+      "password": "123456",
+      "id": 2
     }
   ]
 }

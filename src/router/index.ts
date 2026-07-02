@@ -4,8 +4,10 @@ import ErrandView from '../views/ErrandView.vue'
 import GroupBuyView from '../views/GroupBuyView.vue'
 import HomeView from '../views/HomeView.vue'
 import LostFoundView from '../views/LostFoundView.vue'
+import LoginView from '../views/LoginView.vue'
 import MessageView from '../views/MessageView.vue'
 import PublishView from '../views/PublishView.vue'
+import RegisterView from '../views/RegisterView.vue'
 import TradeView from '../views/TradeView.vue'
 import UserCenterView from '../views/UserCenterView.vue'
 
@@ -74,6 +76,22 @@ const router = createRouter({
       component: UserCenterView,
       meta: {
         title: '个人中心',
+      },
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView,
+      meta: {
+        title: '登录',
+      },
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: RegisterView,
+      meta: {
+        title: '注册',
       },
     },
   ],
