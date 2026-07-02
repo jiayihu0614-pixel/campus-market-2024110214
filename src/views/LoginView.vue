@@ -63,12 +63,12 @@ async function handleLogin() {
 <template>
   <main class="auth-page">
     <section class="auth-card">
-      <span class="page-tag">Mock登录</span>
+      <span class="page-tag">登录</span>
       <h1>欢迎回到校园轻集市</h1>
-      <p class="auth-intro">使用本地JSON Server账号登录，继续发布和管理校园信息。</p>
+      <p class="auth-intro">使用学号登录，继续发布和管理校园信息。</p>
 
       <form class="auth-form" @submit.prevent="handleLogin">
-        <FormField label="用户名" required>
+        <FormField label="学号" required>
           <input v-model="form.username" type="text" autocomplete="username" placeholder="请输入用户名" />
         </FormField>
         <FormField label="密码" required>
@@ -88,11 +88,9 @@ async function handleLogin() {
 
       <div class="auth-links">
         <span>还没有账号？</span>
-        <RouterLink to="/register">创建Mock账号</RouterLink>
+        <RouterLink to="/register">创建账号</RouterLink>
         <RouterLink to="/">游客浏览</RouterLink>
       </div>
-
-      <p class="auth-note">本功能仅用于前端实训，不代表生产环境安全认证。</p>
     </section>
   </main>
 </template>

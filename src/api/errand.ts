@@ -10,6 +10,7 @@ export interface NewErrand {
   publisher: string
   status: string
   description: string
+  image?: string
 }
 
 export function getErrands() {

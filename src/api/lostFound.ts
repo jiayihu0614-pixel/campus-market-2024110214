@@ -9,6 +9,7 @@ export interface NewLostFound {
   contact: string
   description: string
   status: string
+  image?: string
 }
 
 export function getLostFounds() {

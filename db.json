@@ -70,7 +70,7 @@
       "price": 25,
       "category": "教材资料",
       "condition": "九成新",
-      "publisher": "校园用户",
+      "publisher": "数学科学学院 许同学",
       "publishTime": "2026-6-30 14:14:00",
       "location": "第一教学楼大厅",
       "image": "",
@@ -79,24 +79,24 @@
       "id": 6
     },
     {
-      "title": "出售洗面奶",
+      "title": "转让未用完温和洁面乳",
       "price": 30,
       "category": "生活用品",
       "condition": "九成新",
-      "publisher": "校园用户",
+      "publisher": "化学与材料科学学院 黄同学",
       "publishTime": "2026-6-30 17:03:04",
       "location": "东苑食堂门口",
       "image": "",
       "status": "open",
-      "description": "9成新",
+      "description": "只试用过几次，瓶身和压泵完好，介意卫生问题请勿联系。",
       "id": 7
     },
     {
-      "title": "Day5功能验证：转让宿舍收纳架",
+      "title": "转让宿舍桌面收纳架",
       "price": 20,
       "category": "生活用品",
       "condition": "九成新",
-      "publisher": "校园用户",
+      "publisher": "服装与设计艺术学院 唐同学",
       "publishTime": "2026-7-1 09:54:53",
       "location": "东区宿舍6栋",
       "image": "",
@@ -106,16 +106,29 @@
     },
     {
       "image": "",
-      "description": "用于验证登录用户发布、列表搜索、收藏和个人中心联动。",
+      "description": "教材保存完好，重点章节有少量笔记，适合前端入门学习。",
       "publishTime": "2026-07-02 10:30:00",
       "price": 25,
       "category": "教材资料",
       "status": "open",
       "condition": "九成新",
-      "publisher": "Day6实训同学",
+      "publisher": "张同学",
       "location": "东区图书馆门口",
-      "title": "Day6功能走查：出闲置前端开发教材",
+      "title": "出闲置前端开发教材",
       "id": 9
+    },
+    {
+      "id": 10,
+      "title": "出《JavaScript高级程序设计》和Vue学习资料",
+      "price": 46,
+      "category": "教材资料",
+      "condition": "九成新",
+      "publisher": "计算机科学学院 周同学",
+      "publishTime": "2026-07-02 10:55",
+      "location": "狮子山校区图书馆南门",
+      "image": "/uploads/software-books.jpg",
+      "status": "open",
+      "description": "两本资料一起出，书页完整，只在组件和异步编程章节做了少量标记。适合前端入门和课程作业复习，可在图书馆南门当面看书。"
     }
   ],
   "lostFounds": [
@@ -184,6 +197,17 @@
       "description": "下午在图书馆二楼拾到，请失主联系说明卡套特征。",
       "status": "open",
       "id": 6
+    },
+    {
+      "title": "在第一教学楼捡到一个杯子",
+      "type": "found",
+      "itemName": "水杯",
+      "location": "第一教学楼",
+      "time": "2026-07-02T10:42",
+      "contact": "hjy",
+      "description": "请联系",
+      "status": "open",
+      "id": 7
     }
   ],
   "groupBuys": [
@@ -192,7 +216,7 @@
       "title": "东区食堂三楼拼奶茶",
       "type": "餐饮拼单",
       "targetCount": 4,
-      "currentCount": 2,
+      "currentCount": 3,
       "deadline": "2026-06-29 15:30",
       "location": "东区食堂三楼",
       "publisher": "材料学院 何同学",
@@ -204,7 +228,7 @@
       "title": "晚饭外卖拼单免配送费",
       "type": "外卖拼单",
       "targetCount": 5,
-      "currentCount": 3,
+      "currentCount": 4,
       "deadline": "2026-06-29 17:20",
       "location": "南区宿舍 4 栋",
       "publisher": "法学院 钱同学",
@@ -216,11 +240,11 @@
       "title": "快递代取搭子一起搬",
       "type": "互助搭子",
       "targetCount": 3,
-      "currentCount": 2,
+      "currentCount": 3,
       "deadline": "2026-06-29 19:00",
       "location": "菜鸟驿站门口",
       "publisher": "土木学院 唐同学",
-      "status": "open",
+      "status": "closed",
       "description": "今天快递比较多，想找同方向同学一起从驿站搬到西区宿舍。"
     },
     {
@@ -348,14 +372,25 @@
     },
     {
       "college": "计算机学院",
-      "username": "day6_student",
+      "username": "张同学",
       "grade": "2024级",
       "avatar": "",
-      "name": "Day6实训同学",
+      "name": "oo",
       "campus": "东校区",
-      "bio": "正在完成校园轻集市Day6功能走查。",
+      "bio": "无",
       "password": "123456",
       "id": 2
+    },
+    {
+      "username": "2024110214",
+      "password": "123456",
+      "name": "hjy",
+      "college": "计算机学院",
+      "grade": "2024",
+      "campus": "成龙",
+      "avatar": "",
+      "bio": "这个同学暂时还没有填写简介。",
+      "id": 3
     }
   ]
 }

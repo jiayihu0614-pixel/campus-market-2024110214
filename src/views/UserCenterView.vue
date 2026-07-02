@@ -7,6 +7,7 @@ import { getLostFounds, type NewLostFound } from '@/api/lostFound'
 import { getTrades, type NewTrade } from '@/api/trade'
 import EmptyState from '@/components/EmptyState.vue'
 import ItemCard from '@/components/ItemCard.vue'
+import { useActivityStore } from '@/stores/activity'
 import { useFavoriteStore, type FavoriteType } from '@/stores/favorite'
 import { useUserStore } from '@/stores/user'
 
@@ -25,6 +26,7 @@ type ErrandRecord = NewErrand & { id: number }
 
 const userStore = useUserStore()
 const favoriteStore = useFavoriteStore()
+const activityStore = useActivityStore()
 const myPosts = ref<MyPostItem[]>([])
 const postError = ref('')
 
@@ -41,6 +43,7 @@ function getTypeLabel(type: FavoriteType) {
 
 onMounted(async () => {
   if (!userStore.isLoggedIn) return
+  if (userStore.currentUser) activityStore.loadForUser(userStore.currentUser.id)
 
   try {
     const [tradeResponse, lostFoundResponse, groupBuyResponse, errandResponse] = await Promise.all([
@@ -131,6 +134,30 @@ onMounted(async () => {
           <strong>{{ myPosts.length }}</strong>
           <span>我的发布</span>
         </div>
+        <div>
+          <strong>{{ activityStore.joinedCount }}</strong>
+          <span>已报名</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section activity-section">
+      <div class="section-heading">
+        <div><h2>最近动态</h2><p>按时间记录你报名参加的校园活动</p></div>
+        <span>{{ activityStore.joinedCount }}条</span>
+      </div>
+
+      <EmptyState v-if="activityStore.recentActivities.length === 0" text="暂无报名动态，可前往拼单搭子页面参加活动" />
+      <div v-else class="timeline">
+        <article v-for="activity in activityStore.recentActivities" :key="activity.id" class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-content">
+            <time>{{ new Date(activity.joinedAt).toLocaleString('zh-CN', { hour12: false }) }}</time>
+            <h3>报名参加了「{{ activity.title }}」</h3>
+            <p>{{ activity.category }} · {{ activity.location }} · 截止 {{ activity.deadline }}</p>
+            <RouterLink :to="`/detail/groupBuy/${activity.id}`">查看活动详情</RouterLink>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -312,6 +339,17 @@ onMounted(async () => {
 .content-section + .content-section {
   margin-top: 34px;
 }
+
+.activity-section { margin-bottom: 34px; }
+.timeline { padding: 8px 0 4px; }
+.timeline-item { position: relative; padding: 0 0 24px 34px; }
+.timeline-item:not(:last-child)::before { position: absolute; top: 12px; bottom: 0; left: 8px; width: 1px; background: var(--color-border); content: ''; }
+.timeline-dot { position: absolute; top: 5px; left: 3px; width: 11px; height: 11px; border: 3px solid var(--color-primary-soft); border-radius: 50%; background: var(--color-primary); }
+.timeline-content { padding: 18px 20px; border: 1px solid var(--color-border-soft); border-radius: 14px; background: #ffffff; }
+.timeline-content time { color: var(--color-muted-soft); font-size: 12px; }
+.timeline-content h3 { margin: 7px 0; color: var(--color-ink); font-size: 16px; }
+.timeline-content p { margin: 0; color: var(--color-muted); font-size: 13px; }
+.timeline-content a { margin-top: 10px; display: inline-block; color: var(--color-primary-active); font-size: 13px; font-weight: 600; }
 
 .section-heading {
   margin-bottom: 16px;

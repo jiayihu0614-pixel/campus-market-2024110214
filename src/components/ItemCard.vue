@@ -10,6 +10,7 @@ const props = defineProps<{
   publisher: string
   status: string
   tag?: string
+  detailTo?: string
 }>()
 
 const statusText = computed(() => {
@@ -30,7 +31,10 @@ const statusText = computed(() => {
       <span class="item-card__status" :class="`is-${status}`">{{ statusText }}</span>
     </div>
 
-    <h2>{{ title }}</h2>
+    <h2>
+      <RouterLink v-if="detailTo" :to="detailTo">{{ title }}</RouterLink>
+      <template v-else>{{ title }}</template>
+    </h2>
     <p class="item-card__description">{{ description }}</p>
 
     <p v-if="price !== undefined && price !== ''" class="item-card__price">
@@ -131,6 +135,8 @@ const statusText = computed(() => {
   font-weight: 650;
   line-height: 1.45;
 }
+
+.item-card h2 a:hover { color: var(--color-primary-active); }
 
 .item-card__description {
   min-height: 47px;

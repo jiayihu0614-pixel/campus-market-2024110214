@@ -30,13 +30,13 @@ const favoriteStore = useFavoriteStore()
 
 const filteredTrades = computed(() => {
   const searchText = keyword.value.trim().toLowerCase()
-  if (!searchText) return trades.value
-
-  return trades.value.filter((item) =>
+  const matched = searchText ? trades.value.filter((item) =>
     [item.title, item.category, item.location, item.description].some((value) =>
       value.toLowerCase().includes(searchText),
     ),
-  )
+  ) : trades.value
+
+  return matched
 })
 
 async function loadTrades() {
@@ -61,7 +61,7 @@ onMounted(loadTrades)
       <div>
         <span class="page-tag">校园闲置</span>
         <h1>二手交易</h1>
-        <p>这里将展示校园内发布的教材、数码产品、生活用品和运动器材。</p>
+        <p>搜索同学发布的教材、数码产品和生活闲置，线下见面前请仔细确认物品状态。</p>
       </div>
       <RouterLink class="page-action" to="/publish">发布信息</RouterLink>
     </header>
@@ -86,6 +86,7 @@ onMounted(loadTrades)
         :publisher="item.publisher"
         :status="item.status"
         :tag="item.category"
+        :detail-to="`/detail/trade/${item.id}`"
       >
         <template #footer>
           <button

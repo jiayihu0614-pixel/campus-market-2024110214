@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import ErrandView from '../views/ErrandView.vue'
 import GroupBuyView from '../views/GroupBuyView.vue'
+import GroupJoinView from '../views/GroupJoinView.vue'
 import HomeView from '../views/HomeView.vue'
+import DetailView from '../views/DetailView.vue'
 import LostFoundView from '../views/LostFoundView.vue'
 import LoginView from '../views/LoginView.vue'
 import MessageView from '../views/MessageView.vue'
@@ -23,6 +25,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/detail/:type/:id',
+      name: 'detail',
+      component: DetailView,
+      meta: {
+        title: '信息详情',
+      },
+    },
+    {
       path: '/trade',
       name: 'trade',
       component: TradeView,
@@ -36,6 +46,14 @@ const router = createRouter({
       component: LostFoundView,
       meta: {
         title: '失物招领',
+      },
+    },
+    {
+      path: '/group-buy/:id/join',
+      name: 'groupJoin',
+      component: GroupJoinView,
+      meta: {
+        title: '拼单报名',
       },
     },
     {

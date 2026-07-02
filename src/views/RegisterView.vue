@@ -23,7 +23,7 @@ async function handleRegister() {
   errorMessage.value = ''
 
   if (!form.username.trim() || !form.password || !form.name.trim()) {
-    errorMessage.value = '请填写用户名、密码和昵称'
+    errorMessage.value = '请填写学号、密码和昵称'
     return
   }
 
@@ -44,7 +44,7 @@ async function handleRegister() {
     const exists = usersResponse.data.some((item) => item.username === form.username.trim())
 
     if (exists) {
-      errorMessage.value = '该用户名已经存在'
+      errorMessage.value = '该学号已经存在'
       return
     }
 
@@ -73,13 +73,13 @@ async function handleRegister() {
   <main class="register-page">
     <section class="register-card">
       <header>
-        <span class="page-tag">Mock注册</span>
+        <span class="page-tag">注册</span>
         <h1>创建校园账号</h1>
-        <p>填写基础资料，注册成功后使用用户名和密码登录。</p>
+        <p>填写基础资料，注册成功后使用学号和密码登录。</p>
       </header>
 
       <form class="register-form" @submit.prevent="handleRegister">
-        <FormField label="用户名" required>
+        <FormField label="学号" required>
           <input v-model="form.username" type="text" autocomplete="username" />
         </FormField>
         <FormField label="昵称" required>
@@ -98,7 +98,7 @@ async function handleRegister() {
           <input v-model="form.grade" type="text" placeholder="例如：2023级" />
         </FormField>
         <FormField label="校区">
-          <input v-model="form.campus" type="text" placeholder="例如：东校区" />
+          <input v-model="form.campus" type="text" placeholder="例如：成龙校区" />
         </FormField>
         <FormField class="wide-field" label="个人简介">
           <textarea v-model="form.bio" rows="4" placeholder="简单介绍一下自己" />
@@ -112,8 +112,6 @@ async function handleRegister() {
           </button>
         </div>
       </form>
-
-      <p class="register-note">本注册数据写入本地JSON Server，仅用于前端实训。</p>
     </section>
   </main>
 </template>

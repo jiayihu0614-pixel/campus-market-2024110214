@@ -29,6 +29,7 @@ interface PublishForm {
   reward: number | null
   pickupLocation: string
   deliveryLocation: string
+  image: string
 }
 
 const router = useRouter()
@@ -54,6 +55,7 @@ const form = reactive<PublishForm>({
   reward: null,
   pickupLocation: '',
   deliveryLocation: '',
+  image: '',
 })
 
 function clearErrors() {
@@ -116,7 +118,32 @@ function resetForm() {
   form.reward = null
   form.pickupLocation = ''
   form.deliveryLocation = ''
+  form.image = ''
   clearErrors()
+}
+
+function handleImageChange(event: Event) {
+  const input = event.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+
+  if (!file.type.startsWith('image/')) {
+    alert('请选择图片文件')
+    input.value = ''
+    return
+  }
+
+  if (file.size > 1.5 * 1024 * 1024) {
+    alert('图片不能超过1.5MB')
+    input.value = ''
+    return
+  }
+
+  const reader = new FileReader()
+  reader.onload = () => {
+    form.image = typeof reader.result === 'string' ? reader.result : ''
+  }
+  reader.readAsDataURL(file)
 }
 
 async function submitForm() {
@@ -140,7 +167,7 @@ async function submitForm() {
         publisher: userStore.displayName,
         publishTime: currentTime(),
         location: form.location.trim(),
-        image: '',
+        image: form.image,
         status: 'open',
         description: form.description.trim(),
       })
@@ -155,6 +182,7 @@ async function submitForm() {
         time: form.time,
         contact: userStore.displayName,
         description: form.description.trim(),
+        image: form.image,
         status: 'open',
       })
       alert('失物招领信息发布成功')
@@ -170,6 +198,7 @@ async function submitForm() {
         publisher: userStore.displayName,
         status: 'open',
         description: form.description.trim(),
+        image: form.image,
       })
       alert('拼单搭子信息发布成功')
       await router.push('/group-buy')
@@ -184,6 +213,7 @@ async function submitForm() {
         publisher: userStore.displayName,
         status: 'open',
         description: form.description.trim(),
+        image: form.image,
       })
       alert('跑腿委托发布成功')
       await router.push('/errand')
@@ -238,6 +268,18 @@ async function submitForm() {
 
         <FormField label="地点" required :error="errors.location">
           <input v-model="form.location" type="text" placeholder="例如：东区食堂或图书馆南门" />
+        </FormField>
+
+        <FormField label="图片（选填）">
+          <label class="image-upload">
+            <input type="file" accept="image/*" @change="handleImageChange" />
+            <span>{{ form.image ? '重新选择图片' : '选择一张图片' }}</span>
+            <small>JPG、PNG 等格式，不超过1.5MB</small>
+          </label>
+          <div v-if="form.image" class="image-preview">
+            <img :src="form.image" alt="发布图片预览" />
+            <button type="button" @click="form.image = ''">移除图片</button>
+          </div>
         </FormField>
       </section>
 
@@ -403,6 +445,14 @@ async function submitForm() {
   background: var(--color-canvas);
   outline: none;
 }
+
+.image-upload { padding: 18px; display: grid; place-items: center; gap: 5px; border: 1px dashed var(--color-border); border-radius: 12px; color: var(--color-body); background: var(--color-page); cursor: pointer; }
+.image-upload input { display: none; }
+.image-upload span { color: var(--color-primary-active); font-weight: 600; }
+.image-upload small { color: var(--color-muted); font-size: 12px; }
+.image-preview { position: relative; margin-top: 10px; overflow: hidden; border-radius: 12px; }
+.image-preview img { width: 100%; max-height: 240px; display: block; object-fit: cover; }
+.image-preview button { position: absolute; right: 10px; bottom: 10px; padding: 7px 12px; border: 0; border-radius: 999px; color: #ffffff; background: rgb(0 0 0 / 68%); }
 
 .form-section :deep(input:hover),
 .form-section :deep(select:hover),
